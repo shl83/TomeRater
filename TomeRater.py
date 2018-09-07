@@ -142,10 +142,10 @@ class TomeRater(object):
             else:
                 self.books[book] += 1
 
-    def add_user(self, name, email, books = None):
+    def add_user(self, name, email, user_books = None):
         user = User(name, email)
         if books != None:
-            for book in books:
+            for book in user_books:
                 self.add_book_to_user(book, email)
 
 #Analysis Methods
