@@ -128,7 +128,7 @@ class TomeRater(object):
         return fiction
 
     def create_non_fiction(self, title, subject, level, isbn):
-        non_fiction = Non_Fiction(title, subject, isbn)
+        non_fiction = Non_Fiction(title, subject, level, isbn)
         return non_fiction
 
     def add_book_to_user(self, book, email, rating = "None"):
