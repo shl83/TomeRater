@@ -12,14 +12,17 @@ class User(object):
 
     def change_email(self, address):
         self.email = address
-        print("This user’s email has been updated to " + address)
+        print("This user’s email has been updated to " + self.email)
 
     def __repr__(self):
-        user_object = "User " + self.name + ', email: ' + self.email + ", books read: " + self.books
+        return "User " + self.name + ', email: ' + self.email + ", books read: " + str(len(self.books))
 
     def __eq__(self, other_user):
         """A User object should be equal to another User object if they both have the same name and email."""
-        self.name == other_user.name and self.email == other_user.email
+        if self.name == other_user.name and self.email == other_user.email:
+            return True
+        else:
+            return False
 
     def read_book(self, book, rating = "None"):
         self.books[book] = rating
@@ -61,7 +64,7 @@ class Book(object):
             print("Invalid Rating")
         
     def __eq__(self,other_book):
-        self.title = other_book.title and self.isbn = other_book.isbn
+        self.title == other_book.title and self.isbn == other_book.isbn
 
     def get_average_rating(self):
         total_book_rating = 0
@@ -82,7 +85,7 @@ class Fiction(Book):
 
     def __init__(self, title, isbn, author):
         super().__init__(title, isbn)
-        self.author
+        self.author = author
 
     def get_author(self):
         return self.author
@@ -106,14 +109,14 @@ class Non_Fiction(Book):
         return self.level
 
     def __repr__(self):
-        return title + ', a ' + level + ' manual on ' + subject
+        return title + ', a ' + level + ' manual on ' + self.subject
 
 #TomeRater
 
-class Tomerater(Object):
+class TomeRater(object):
 
     def __init__(self):
-        self.users = {}
+        self.users = {  }
         self.books = {}
         
     def create_book(self, title, isbn):
